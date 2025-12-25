@@ -22,3 +22,7 @@ body {
 .hovered-cell {
   background-color: #23498f;
 }
+
+button {
+  padding: 8px 18px;
+}

@@ -1,7 +1,8 @@
 const CELL_LENGTH = 10;
-const gridContainer = document.querySelector(".grid-container");
 
 function createGrid(length, width) {
+  resetGrid();
+  const gridContainer = document.querySelector(".grid-container");
   width = width ? width : length;
   gridContainer.style.width = width * CELL_LENGTH + "px";
   gridContainer.style.height = length * CELL_LENGTH + "px";
@@ -17,3 +18,19 @@ function createGrid(length, width) {
 }
 
 createGrid(16);
+
+const newGrid = document.querySelector(".new-grid");
+newGrid.addEventListener("click", () => {
+  let size = +prompt("Enter new grid size: ");
+  createGrid(size);
+});
+
+function resetGrid() {
+  let gridContainer = document.querySelector(".grid-container");
+  if (gridContainer) {
+    gridContainer.remove();
+  }
+  gridContainer = document.createElement("div");
+  gridContainer.classList.add("grid-container");
+  document.body.appendChild(gridContainer);
+}
