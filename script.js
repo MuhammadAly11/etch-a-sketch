@@ -22,6 +22,7 @@ function createGrid(width, length, numOfCellsPerSide) {
     div.style.height = cellLength + "px";
     div.addEventListener("mouseout", () => {
       div.classList.add("hovered-cell");
+      div.style.backgroundColor = getRandomColor();
     });
     gridContainer.appendChild(div);
   }
@@ -68,4 +69,13 @@ function getGridState() {
     cellLength: +cell.style.width.slice(0, -2),
     totalCells: gridContainer.getElementsByTagName("div").length,
   };
+}
+
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
