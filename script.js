@@ -21,8 +21,14 @@ function createGrid(width, length, numOfCellsPerSide) {
     div.style.width = cellLength + "px";
     div.style.height = cellLength + "px";
     div.addEventListener("mouseout", () => {
-      div.classList.add("hovered-cell");
-      div.style.backgroundColor = getRandomColor();
+      if (!div.style.opacity) {
+        div.style.opacity = "0.1";
+        div.classList.add("hovered-cell");
+        div.style.backgroundColor = getRandomColor();
+      }
+      let opacity = parseFloat(div.style.opacity);
+      opacity += 0.1;
+      div.style.opacity = String(opacity);
     });
     gridContainer.appendChild(div);
   }
